@@ -14,7 +14,6 @@ CREATE TABLE Players (
 CREATE TABLE Team (
 team_ID INT PRIMARY KEY,
 team_name VARCHAR(100),
-match_win_count INT
 );
 
 CREATE TABLE Register (
@@ -166,6 +165,15 @@ FOREIGN KEY (tournament_ID) REFERENCES Tournament (tournament_ID),
 FOREIGN KEY (match_ID) REFERENCES Matches (match_ID)
 );
 
+
+CREATE TABLE Participates_IN (
+tournament_ID INT,
+team_ID INT,
+match_win_count INT,
+PRIMARY KEY (tournament_ID, team_ID),
+FOREIGN KEY (tournament_ID) REFERENCES Tournament (tournament_ID),
+FOREIGN KEY (team_ID) REFERENCES Team (team_ID)
+);
 
 CREATE TABLE Held_In (
 tournament_ID INT,
