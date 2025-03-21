@@ -5,7 +5,7 @@ CREATE TABLE Players (
     password VARCHAR(100),
     name VARCHAR(100),
     surname VARCHAR(100),
-    nationality VARCHAR(100),
+    nationality VARCHAR(100) NOT NULL,
     date_of_birth DATE,
     elo_rating INT CHECK (elo_rating > 1000),
     fide_ID INT
@@ -133,9 +133,9 @@ match_ID INT PRIMARY KEY,
 hall_ID INT,
 table_ID INT,
 white_player VARCHAR(100) NOT NULL,
-white_player_team INT,
+white_player_team INT NOT NULL,
 black_player VARCHAR(100) NOT NULL,
-black_player_team INT,
+black_player_team INT NOT NULL,
 result ENUM ('white_wins', 'black_wins', 'draw') NOT NULL,
 rating INT CHECK (rating >= 1 AND rating <= 10),
 time_slot INT CHECK (time_slot >= 1 AND time_slot <= 4),
@@ -160,7 +160,7 @@ FOREIGN KEY (chief_arbiter) REFERENCES Arbiter (username)
 );
 
 CREATE TABLE Include (
-tournament_ID INT,
+tournament_ID INT NOT NULL,
 match_ID INT PRIMARY KEY,
 FOREIGN KEY (tournament_ID) REFERENCES Tournament (tournament_ID),
 FOREIGN KEY (match_ID) REFERENCES Matches (match_ID)
