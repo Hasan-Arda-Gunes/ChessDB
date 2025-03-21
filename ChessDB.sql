@@ -13,7 +13,7 @@ CREATE TABLE Players (
 
 CREATE TABLE Team (
 team_ID INT PRIMARY KEY,
-team_name VARCHAR(100),
+team_name VARCHAR(100)
 );
 
 CREATE TABLE Register (
